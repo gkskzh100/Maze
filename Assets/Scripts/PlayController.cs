@@ -60,36 +60,36 @@ public class PlayController : MonoBehaviour {
 		return dir;
 	}
 
-	private GameObject FindMaze() {
-		Collider[] stopColliders = Physics.OverlapSphere(transform.position, radius);
+	// private GameObject FindMaze() {
+	// 	Collider[] stopColliders = Physics.OverlapSphere(transform.position, radius);
 
-		float temp = 0;
-		float shortTemp = 10000;
+	// 	float temp = 0;
+	// 	float shortTemp = 10000;
 
-		for (int i = 0; i < stopColliders.Length; i++ ) {
-			if (stopColliders[i].tag == "Maze") {
-				temp = Vector3.Distance(stopColliders[i].transform.position,transform.position);
-				if(temp < shortTemp) {
-					mazeObject = stopColliders[i].gameObject;
-					shortTemp = temp;
-				}
-			}
-		}
-		return mazeObject;
-	}
-	void OnTriggerEnter(Collider col)
-	{
-		if(col.transform.tag == "Maze") {
-			triggerBool = true;
-			randMaze = FindMaze().GetComponent<RandMaze>();
-			if(randMaze != null) {
-				randMaze.coroutineActive();
-			}
-		}
-	}
-	void OnTriggerExit(Collider col)
-	{
-		if(col.transform.tag == "Maze")
-			triggerBool = false;
-	}
+	// 	for (int i = 0; i < stopColliders.Length; i++ ) {
+	// 		if (stopColliders[i].tag == "Maze") {
+	// 			temp = Vector3.Distance(stopColliders[i].transform.position,transform.position);
+	// 			if(temp < shortTemp) {
+	// 				mazeObject = stopColliders[i].gameObject;
+	// 				shortTemp = temp;
+	// 			}
+	// 		}
+	// 	}
+	// 	return mazeObject;
+	// }
+	// void OnTriggerEnter(Collider col)
+	// {
+	// 	if(col.transform.tag == "Maze") {
+	// 		triggerBool = true;
+	// 		randMaze = FindMaze().GetComponent<RandMaze>();
+	// 		if(randMaze != null) {
+	// 			randMaze.coroutineActive();
+	// 		}
+	// 	}
+	// }
+	// void OnTriggerExit(Collider col)
+	// {
+	// 	if(col.transform.tag == "Maze")
+	// 		triggerBool = false;
+	// }
 }

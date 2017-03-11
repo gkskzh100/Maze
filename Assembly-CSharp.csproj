@@ -53,9 +53,11 @@
      <Compile Include="Assets\Scripts\Cube2Controller.cs" />
      <Compile Include="Assets\Scripts\Cube3Controller.cs" />
      <Compile Include="Assets\Scripts\Cube4Controller.cs" />
+     <Compile Include="Assets\Scripts\Gizmo.cs" />
      <Compile Include="Assets\Scripts\JumpController.cs" />
      <Compile Include="Assets\Scripts\PlayController.cs" />
      <Compile Include="Assets\Scripts\RandMaze.cs" />
+     <Compile Include="Assets\Scripts\SpawnPoint.cs" />
      <Compile Include="Assets\Scripts\VirtualJoystick.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>

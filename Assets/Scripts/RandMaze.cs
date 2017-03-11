@@ -8,28 +8,29 @@ public class RandMaze : MonoBehaviour {
 	private int randomNum;
 	private int[] numConvert = new int[4] {0,0,0,0};
 	private int result;
-	private PlayController playController;
-	private SphereCollider sphereCollider;
+	// private PlayController playController;
+	// private SphereCollider sphereCollider;
 
 	// Use this for initialization
 	public void Start () {
-		sphereCollider = gameObject.AddComponent<SphereCollider>();
-		sphereCollider.radius = 10f;
-		sphereCollider.isTrigger = true;
+	// 	sphereCollider = gameObject.AddComponent<SphereCollider>();
+	// 	sphereCollider.radius = 10f;
+	// 	sphereCollider.isTrigger = true;
+	StartCoroutine (countTime());
 	}
-	public void coroutineActive() {
-		StartCoroutine (countTime());
-	}
+	// public void coroutineActive() {
+	// 	StartCoroutine (countTime());
+	// }
 
 	IEnumerator countTime() {
 		numberSelect();
-		playController = GameObject.Find("Player").GetComponent<PlayController>();
-		if(!playController.triggerBool)
-			yield break;
-		if(playController.triggerBool){
+		// playController = GameObject.Find("Player").GetComponent<PlayController>();
+		// if(!playController.triggerBool)
+		// 	yield break;
+		// if(playController.triggerBool){
 			yield return new WaitForSeconds(5); //5초마다 반복
 			StartCoroutine (countTime());
-		}
+		// }
 	}
 
 	private void numberSelect() {
