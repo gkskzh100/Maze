@@ -5,7 +5,7 @@ public class SpawnPoint : MonoBehaviour {
 
 	public Transform[] points;
 	public GameObject door;
-	public float createTime = 5.0f;
+	public float createTime = 60.0f;
 	private int rotation;
 
 
