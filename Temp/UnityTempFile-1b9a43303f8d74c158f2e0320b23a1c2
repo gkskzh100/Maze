@@ -82,6 +82,7 @@
 'Assets/Scripts/Gizmo.cs'
 'Assets/Scripts/JumpController.cs'
 'Assets/Scripts/MonsterGizmo.cs'
+'Assets/Scripts/MonsterPoint.cs'
 'Assets/Scripts/PlayController.cs'
 'Assets/Scripts/Portal.cs'
 'Assets/Scripts/RandMaze.cs'
