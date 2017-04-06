@@ -49,18 +49,20 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\Cube1Controller.cs" />
-     <Compile Include="Assets\Scripts\Cube2Controller.cs" />
-     <Compile Include="Assets\Scripts\Cube3Controller.cs" />
-     <Compile Include="Assets\Scripts\Cube4Controller.cs" />
-     <Compile Include="Assets\Scripts\Gizmo.cs" />
      <Compile Include="Assets\Scripts\JumpController.cs" />
-     <Compile Include="Assets\Scripts\MonsterGizmo.cs" />
-     <Compile Include="Assets\Scripts\MonsterPoint.cs" />
+     <Compile Include="Assets\Scripts\Maze\Cube1Controller.cs" />
+     <Compile Include="Assets\Scripts\Maze\Cube2Controller.cs" />
+     <Compile Include="Assets\Scripts\Maze\Cube3Controller.cs" />
+     <Compile Include="Assets\Scripts\Maze\Cube4Controller.cs" />
+     <Compile Include="Assets\Scripts\Maze\Gizmo.cs" />
+     <Compile Include="Assets\Scripts\Maze\MonsterGizmo.cs" />
+     <Compile Include="Assets\Scripts\Maze\MonsterPoint.cs" />
+     <Compile Include="Assets\Scripts\Maze\Portal.cs" />
+     <Compile Include="Assets\Scripts\Maze\RandMaze.cs" />
+     <Compile Include="Assets\Scripts\Maze\SpawnPoint.cs" />
+     <Compile Include="Assets\Scripts\MonsterController.cs" />
      <Compile Include="Assets\Scripts\PlayController.cs" />
-     <Compile Include="Assets\Scripts\Portal.cs" />
-     <Compile Include="Assets\Scripts\RandMaze.cs" />
-     <Compile Include="Assets\Scripts\SpawnPoint.cs" />
+     <Compile Include="Assets\Scripts\PlayerAlive.cs" />
      <Compile Include="Assets\Scripts\VirtualJoystick.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
