@@ -8,6 +8,7 @@ public class VirtualJoystick : MonoBehaviour,IDragHandler,IPointerUpHandler,IPoi
 	private Image bgImage;
 	private Image joystickImage;
 	private Vector3 inputVector;
+	public bool touch;
 
 	private void Start()
 	{
@@ -35,10 +36,12 @@ public class VirtualJoystick : MonoBehaviour,IDragHandler,IPointerUpHandler,IPoi
 
 	public virtual void OnPointerDown(PointerEventData ped) {
 		OnDrag(ped);
+		touch = true;
 	}
 	public virtual void OnPointerUp(PointerEventData ped) {
 		inputVector = Vector3.zero;
-		joystickImage.rectTransform.anchoredPosition = Vector3.zero;	
+		joystickImage.rectTransform.anchoredPosition = Vector3.zero;
+		touch = false;
 	}
 
 	public float Horizontal() {

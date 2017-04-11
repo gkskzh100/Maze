@@ -14,6 +14,8 @@ public class MonsterController : MonoBehaviour {
 	private bool highAlert = false;
 	private float alertness = 20f;
 
+	
+
 	// Use this for initialization
 	void Start () {
 		nav = GetComponent<NavMeshAgent>();
@@ -94,6 +96,5 @@ public class MonsterController : MonoBehaviour {
 				}
 			}
 		}
-		// nav.SetDestination(player.transform.position);
 	}
 }

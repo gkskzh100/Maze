@@ -17,6 +17,7 @@ public class PlayController : MonoBehaviour {
 	public JumpController jumpJoystick;
 	private GameObject mazeObject;
 	private RandMaze randMaze = null;
+	private MobileTouch moveCamera;
 
 	// Use this for initialization
 	void Start () {
@@ -32,6 +33,13 @@ public class PlayController : MonoBehaviour {
 		MoveVector = PoolInput();
 		Move();
 		Jump();
+		try {
+			moveCamera = GameObject.Find("RotateCamera").GetComponent<MobileTouch>();
+			transform.Rotate(0,moveCamera.movePos,0);
+		} catch (System.NullReferenceException e) {
+			Debug.Log("asdfasdfasdf");
+		}
+		
 	}
 
 	private void Move() {

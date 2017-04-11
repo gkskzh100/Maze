@@ -60,6 +60,7 @@
      <Compile Include="Assets\Scripts\Maze\Portal.cs" />
      <Compile Include="Assets\Scripts\Maze\RandMaze.cs" />
      <Compile Include="Assets\Scripts\Maze\SpawnPoint.cs" />
+     <Compile Include="Assets\Scripts\MobileTouch.cs" />
      <Compile Include="Assets\Scripts\MonsterController.cs" />
      <Compile Include="Assets\Scripts\PlayController.cs" />
      <Compile Include="Assets\Scripts\PlayerAlive.cs" />
