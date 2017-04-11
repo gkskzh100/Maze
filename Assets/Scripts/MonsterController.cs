@@ -7,12 +7,14 @@ public class MonsterController : MonoBehaviour {
 	public GameObject player;
 	private NavMeshAgent nav;
 	private string state = "idle";
-	private bool alive = true;
+	private bool alive;
 	private Animator anim;
 	public Transform eyes;
 	private float wait = 0f;
 	private bool highAlert = false;
 	private float alertness = 20f;
+	private PlayerAlive playerAlive;
+	private PlayController playController;
 
 	
 
@@ -25,6 +27,9 @@ public class MonsterController : MonoBehaviour {
 		nav.baseOffset = -1f;
 		nav.speed = 3.5f;
 		anim.speed = 1.2f;
+		playerAlive = GameObject.Find("Player").GetComponent<PlayerAlive>();
+		alive = playerAlive.alive;
+		player = GameObject.Find("Player");
 	}
 
 	public void checkSight() {
@@ -95,6 +100,15 @@ public class MonsterController : MonoBehaviour {
 					checkSight();
 				}
 			}
+		}
+	}
+
+	void OnTriggerEnter(Collider col)
+	{
+		if(col.gameObject.name == "Player") {
+			Debug.Log("User Died");
+			playController = GameObject.Find("Player").GetComponent<PlayController>();
+			playController.Died();
 		}
 	}
 }

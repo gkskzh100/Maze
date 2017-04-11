@@ -37,7 +37,7 @@ public class PlayController : MonoBehaviour {
 			moveCamera = GameObject.Find("RotateCamera").GetComponent<MobileTouch>();
 			transform.Rotate(0,moveCamera.movePos,0);
 		} catch (System.NullReferenceException e) {
-			Debug.Log("asdfasdfasdf");
+
 		}
 		
 	}
@@ -54,6 +54,10 @@ public class PlayController : MonoBehaviour {
 		} else if (!jumpJoystick.isPressed && !onGround && transform.position.y <=2) {
 			onGround = true;
 		}
+	}
+	
+	public void Died() {
+		transform.position = new Vector3(243.7f, 2f, -245.4f);
 	}
 
 	private Vector3 PoolInput() {

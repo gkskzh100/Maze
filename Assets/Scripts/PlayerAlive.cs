@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class PlayerAlive : MonoBehaviour {
 
-	public bool alive = true;
+	public bool alive;
+
+	void Start()
+	{
+		alive = true;
+	}
 
 	void OnTriggerEnter(Collider other)
 	{

@@ -16,7 +16,7 @@ public class MonsterPoint : MonoBehaviour {
 	}
 	
 	IEnumerator CreateMonster() {
-		for(int i = 0; i <5; i++) {
+		for(int i = 0; i <8; i++) {
 			int index = Random.Range(1,points.Length);
 			pointIndex[i] = index;
 

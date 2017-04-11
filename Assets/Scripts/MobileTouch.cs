@@ -46,10 +46,6 @@ public class MobileTouch : MonoBehaviour {
 				movePos = 0;
 			}
 		}
-
-		// if(Input.GetMouseButton(0)) {
-		// 	Debug.Log(Input.mousePosition.x);
-		// }
 	}
 }
 
