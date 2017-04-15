@@ -12,6 +12,9 @@ public class VirtualJoystick : MonoBehaviour,IDragHandler,IPointerUpHandler,IPoi
 
 	private void Start()
 	{
+		Screen.SetResolution(2560,1440,true);
+		Screen.sleepTimeout = SleepTimeout.NeverSleep;
+		
 		bgImage = GetComponent<Image>();
 		joystickImage = transform.GetChild(0).GetComponent<Image>();
 	}

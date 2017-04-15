@@ -22,6 +22,12 @@ public class RandMaze : MonoBehaviour {
 	// 	StartCoroutine (countTime());
 	// }
 
+	void Update()
+	{
+		if(Input.GetKey(KeyCode.Escape)) {
+			Application.Quit();
+		}
+	}
 	IEnumerator countTime() {
 		numberSelect();
 		// playController = GameObject.Find("Player").GetComponent<PlayController>();
