@@ -26,9 +26,14 @@ public class MobileTouch : MonoBehaviour {
 				// Debug.Log(prePos);
 			} else if (touch.phase == TouchPhase.Moved && !touchBool) { // 터치하고 움직일때
 				nowPos = prePos - touch.position.x;
-				nowPos = nowPos/180;
+				// nowPos = nowPos/180;
 				// Debug.Log(nowPos);
-				movePos = nowPos * Time.deltaTime * 20.0f;
+				if(nowPos > 0) {
+					movePos = 5 * Time.deltaTime * 10.0f;
+				} else if(nowPos < 0) {
+					movePos = -5 * Time.deltaTime * 10.0f;
+				}
+				// movePos = nowPos * Time.deltaTime * 20.0f;
 			} else if (touch.phase == TouchPhase.Ended && !touchBool) { //터치 끝날때
 				movePos = 0;
 			}
@@ -39,14 +44,20 @@ public class MobileTouch : MonoBehaviour {
 				// Debug.Log(prePos);
 			} else if (touch.phase == TouchPhase.Moved && touchBool) {
 				nowPos = prePos - touch.position.x;
-				nowPos = nowPos/180;
+				// nowPos = nowPos/180;
 				// Debug.Log(nowPos);
-				movePos = nowPos * Time.deltaTime * 20.0f;
+				if(nowPos > 0) {
+					movePos = 5 * Time.deltaTime * 10.0f;
+				} else if(nowPos < 0) {
+					movePos = -5 * Time.deltaTime * 10.0f;
+				}
+				// movePos = nowPos * Time.deltaTime * 20.0f;
 			} else if (touch.phase == TouchPhase.Ended && touchBool) {
 				movePos = 0;
 			}
 		}
 	}
 }
+//왼쪽 + 오른쪽 - 
 
 //./adb logcat Unity:I Native:I *:S

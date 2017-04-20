@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 
 public class MonsterController : MonoBehaviour {
 	public GameObject player;
+	public GameObject deathCam;
+	public Transform camPosition;
 	private NavMeshAgent nav;
 	private string state = "idle";
 	private bool alive;
@@ -27,9 +30,9 @@ public class MonsterController : MonoBehaviour {
 		nav.baseOffset = -1f;
 		nav.speed = 3.5f;
 		anim.speed = 1.2f;
+		player = GameObject.Find("Player");
 		playerAlive = GameObject.Find("Player").GetComponent<PlayerAlive>();
 		alive = playerAlive.alive;
-		player = GameObject.Find("Player");
 	}
 
 	public void checkSight() {
@@ -90,6 +93,12 @@ public class MonsterController : MonoBehaviour {
 				if(distance > 10f) {
 					state = "hunt"; 
 				}
+				//kill the player//
+				else if(nav.remainingDistance <= nav.stoppingDistance + 1f && !nav.pathPending) {
+					if(playerAlive.GetComponent<PlayerAlive>().alive) {
+						// StateKill();
+					}
+				}
 			}
 			if(state == "hunt") {
 				if(nav.remainingDistance <= nav.stoppingDistance && !nav.pathPending) {
@@ -100,15 +109,43 @@ public class MonsterController : MonoBehaviour {
 					checkSight();
 				}
 			}
+			if(state == "kill") {
+				deathCam.transform.position = Vector3.Slerp(deathCam.transform.position,camPosition.transform.position,10f*Time.deltaTime);
+				deathCam.transform.rotation = Quaternion.Slerp(deathCam.transform.rotation,camPosition.transform.rotation,10f*Time.deltaTime);
+				nav.SetDestination(deathCam.transform.position);
+			}
 		}
+	}
+
+	void reset() {
+		// SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+		state = "idle";
+		playerAlive.GetComponent<PlayerAlive>().alive = true;
+		playController.GetComponent<PlayController>().enabled = true;
+		deathCam.SetActive(false);
+		GameObject.Find("Player").transform.FindChild("Camera").gameObject.SetActive(true);
+		
 	}
 
 	void OnTriggerEnter(Collider col)
 	{
 		if(col.gameObject.name == "Player") {
-			Debug.Log("User Died");
 			playController = GameObject.Find("Player").GetComponent<PlayController>();
-			playController.Died();
+			// playController.Died();
+			StateKill();
 		}
+	}
+
+	private void StateKill() {
+		state = "kill";
+		playerAlive.GetComponent<PlayerAlive>().alive = false;
+		playController.GetComponent<PlayController>().enabled = false;
+		deathCam.SetActive(true);
+		deathCam.transform.position = Camera.main.transform.position;
+		deathCam.transform.rotation = Camera.main.transform.rotation;
+		Camera.main.gameObject.SetActive(false);
+		playController = GameObject.Find("Player").GetComponent<PlayController>();
+		playController.Died();
+		Invoke("reset",3f);
 	}
 }

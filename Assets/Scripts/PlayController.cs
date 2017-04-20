@@ -19,19 +19,24 @@ public class PlayController : MonoBehaviour {
 	private RandMaze randMaze = null;
 	private MobileTouch moveCamera;
 
+	private Portal portal;
+	private bool moveBool = true;
+
 	// Use this for initialization
 	void Start () {
 		thisRigidbody = gameObject.AddComponent<Rigidbody>();
 		thisRigidbody.drag = drag;
 		thisRigidbody.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
 		onGround = true;
-
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		MoveVector = PoolInput();
-		Move();
+		portal = GameObject.Find("door(Clone)").GetComponent<Portal>();
+		moveBool = portal.userBool;
+		if(moveBool) Move();
+		
 		Jump();
 		try {
 			moveCamera = GameObject.Find("RotateCamera").GetComponent<MobileTouch>();

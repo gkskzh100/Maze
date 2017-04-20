@@ -10,6 +10,9 @@ public class VirtualJoystick : MonoBehaviour,IDragHandler,IPointerUpHandler,IPoi
 	private Vector3 inputVector;
 	public bool touch;
 
+	private Portal portal;
+	private bool moveBool = true;
+
 	private void Start()
 	{
 		Screen.SetResolution(2560,1440,true);
@@ -17,11 +20,18 @@ public class VirtualJoystick : MonoBehaviour,IDragHandler,IPointerUpHandler,IPoi
 		
 		bgImage = GetComponent<Image>();
 		joystickImage = transform.GetChild(0).GetComponent<Image>();
+		portal = GameObject.Find("door(Clone)").GetComponent<Portal>();
+	}
+
+	void Update()
+	{
+		moveBool = portal.userBool;
 	}
 
 	public virtual void OnDrag(PointerEventData ped) {
-		Vector2 pos;
-		if(RectTransformUtility.ScreenPointToLocalPointInRectangle(bgImage.rectTransform,
+		if(moveBool) {
+			Vector2 pos;
+			if(RectTransformUtility.ScreenPointToLocalPointInRectangle(bgImage.rectTransform,
 																	ped.position,
 																	ped.pressEventCamera,
 																	out pos)) {
@@ -34,6 +44,9 @@ public class VirtualJoystick : MonoBehaviour,IDragHandler,IPointerUpHandler,IPoi
 			joystickImage.rectTransform.anchoredPosition = 
 					new Vector3(inputVector.x * (bgImage.rectTransform.sizeDelta.x/3)
 								,inputVector.z * bgImage.rectTransform.sizeDelta.y/3);
+			}
+		} else {
+			joystickImage.rectTransform.anchoredPosition = Vector3.zero;
 		}
 	}
 

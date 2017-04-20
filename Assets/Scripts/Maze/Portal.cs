@@ -5,10 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class Portal : MonoBehaviour {
 
+	public bool userBool = true;
 	void OnTriggerEnter(Collider col)
 	{
 		if(col.tag == "Player") {
 			GameObject.Find("Player").SendMessage("Finish");
+			userBool = false;
 			StartCoroutine(delayTime());
 		}
 	}
